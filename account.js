@@ -1,20 +1,21 @@
 class Account {
-  balance;
+  _balance;
   ownerName;
 
   constructor(ownerName) {
-    this.balance = 0;
+    this._balance = 0;
     this.ownerName = ownerName;
   }
 
   sacar(value) {
     if (value < 0) {
       console.log("Não é possível sacar valores negativos");
+      return;
     }
-    if (this.balance >= value) {
-      this.balance -= value;
+    if (this._balance >= value) {
+      this._balance -= value;
       console.log(
-        `Saque efetuado com sucesso\nValor do saque: ${value}\nNovo saldo:$ ${this.balance}`
+        `Saque efetuado com sucesso\nValor do saque: ${value}\nNovo saldo:$ ${this._balance}`
       );
     } else {
       console.log(`Saldo para saque indisponível`);
@@ -24,12 +25,13 @@ class Account {
   depositar(value) {
     if (value < 0) {
       console.log("Não é possível depositar valores negativos");
+      return;
     }
-    this.balance += value;
+    this._balance += value;
     console.log(
-      `Deposito efetuado com sucesso\nValor do deposito: ${value}\nNovo saldo:$ ${this.balance}`
+      `Deposito efetuado com sucesso\nValor do deposito: ${value}\nNovo saldo:$ ${this._balance}`
     );
   }
 }
 
-module.exports = Account;
+export default Account;

@@ -1,0 +1,21 @@
+{
+  "name": "bytebank",
+  "version": "1.0.0",
+  "description": "Este repositorio tem relação com o que é ensinado no curso de JavaScript: Orientado a Objeto da Alura.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phroliveira08/bytebank.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phroliveira08/bytebank/issues"
+  },
+  "homepage": "https://github.com/phroliveira08/bytebank#readme",
+  "type":"module"
+}
