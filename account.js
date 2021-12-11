@@ -1,13 +1,31 @@
+import Customer from "./Customer.js";
+
 class Account {
   _balance;
-  ownerName;
+  _owner;
 
-  constructor(ownerName) {
+  constructor(owner) {
     this._balance = 0;
-    this.ownerName = ownerName;
+    this.owner = owner;
   }
 
-  sacar(value) {
+  set owner(owner) {
+    if (owner instanceof Customer) {
+      this._owner = owner;
+    }
+  }
+
+  get owner() {
+    console.log("Dono da conta", this._owner);
+    return this._owner;
+  }
+
+  get balance() {
+    console.log("Saldo atual é", this._balance);
+    return this._balance;
+  }
+
+  withdraw(value) {
     if (value < 0) {
       console.log("Não é possível sacar valores negativos");
       return;
@@ -22,7 +40,7 @@ class Account {
     }
   }
 
-  depositar(value) {
+  deposit(value) {
     if (value < 0) {
       console.log("Não é possível depositar valores negativos");
       return;
@@ -31,6 +49,19 @@ class Account {
     console.log(
       `Deposito efetuado com sucesso\nValor do deposito: ${value}\nNovo saldo:$ ${this._balance}`
     );
+  }
+
+  transfer(value, account) {
+    if (this._balance < value) {
+      console.log(`Saldo indisponível para transferência`);
+      return;
+    } else if (value <= 0) {
+      console.log(`Não é possível transferir esse valor`);
+      return;
+    }
+    account.deposit(value);
+    this.withdraw(value);
+    console.log(`Transferência efetuada com sucesso`);
   }
 }
 

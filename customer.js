@@ -1,12 +1,18 @@
 class Customer {
-  name;
-  cpf;
-  accountId;
-  balance;
+  _name;
+  _cpf;
 
   constructor(name, cpf) {
-    this.name = name;
-    this.cpf = cpf;
+    this._name = name;
+    this._cpf = cpf;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  get cpf() {
+    return this._cpf;
   }
 }
 
