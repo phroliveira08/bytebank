@@ -1,12 +1,14 @@
 import Customer from "./Customer.js";
 
 class Account {
+  static numAccounts = 0;
   _balance;
   _owner;
 
   constructor(owner) {
     this._balance = 0;
     this.owner = owner;
+    Account.numAccounts++;
   }
 
   set owner(owner) {
