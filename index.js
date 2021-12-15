@@ -9,6 +9,8 @@ const account1 = new SalaryAccount(customer1);
 const customer2 = new Customer("Cis", "125412549");
 const account2 = new SavingAccount(customer2);
 
+//const account3 = new Account(customer2); //Chama um erro
+
 account1.deposit(500);
 account1.withdraw(50);
 account1.transfer(100, account2);

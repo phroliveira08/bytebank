@@ -4,6 +4,10 @@ class SalaryAccount extends Account {
     super(owner);
     console.log("Conta salário criada com sucesso");
   }
+
+  withdraw(value) {
+    this._withdraw(value, 0.1);
+  }
 }
 
 export default SalaryAccount;

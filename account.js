@@ -9,6 +9,12 @@ class Account {
     this._balance = 0;
     this.owner = owner;
     Account.numAccounts++;
+
+    if (this.constructor === Account) {
+      throw new Error(
+        "A classe Account não é instanciada diretamente, pois é uma classe abstrata"
+      );
+    }
   }
 
   set owner(owner) {
@@ -27,15 +33,24 @@ class Account {
     return this._balance;
   }
 
-  withdraw(value) {
+  withdraw() {
+    throw new Error("Este método é abstrato.");
+  }
+
+  _withdraw(value, tax) {
     if (value < 0) {
       console.log("Não é possível sacar valores negativos");
       return;
     }
-    if (this._balance >= value) {
-      this._balance -= value;
+
+    const totalValue = value + value * tax;
+
+    if (this._balance >= totalValue) {
+      this._balance -= totalValue;
       console.log(
-        `Saque efetuado com sucesso\nValor do saque: ${value}\nNovo saldo:$ ${this._balance}`
+        `Saque efetuado com sucesso\nValor do saque: ${value}\nTaxa de saque: ${
+          tax * 100
+        }%\nNovo saldo:$ ${this._balance}`
       );
     } else {
       console.log(`Saldo para saque indisponível`);
